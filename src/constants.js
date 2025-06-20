@@ -41,7 +41,7 @@ import newtonschoolLogo from './assets/company_logo/newtonschool_logo.png';
 // Education Section Logo's
 import sbsLOGO from './assets/education_logo/sbs.png';
 import RpsdLogo from './assets/education_logo/Rpsd.gif';
-import CgcLogo from './assets/education_logo/cgc.jpeg';
+import CgcLogo from './assets/education_logo/Cgc.jpeg';
 
 // // Project Section Logo's
 // import githubdetLogo from './assets/work_logo/github_det.png';
