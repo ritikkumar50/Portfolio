@@ -7,3 +7,6 @@
   border-radius: 12px;
   padding: 20px;
 }
+body {
+  background-color: transparent;
+}

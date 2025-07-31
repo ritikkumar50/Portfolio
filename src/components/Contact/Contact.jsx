@@ -7,44 +7,48 @@ const Contact = () => {
   const form = useRef();
   const [IsSent, setIsSent] = useState(false);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+const [isSending, setIsSending] = useState(false);
 
-    emailjs
-      .sendForm(
-        "service_6wqav2n",  // Replace with your EmailJS Service ID
-        "template_fv5y93p",  // Replace with your EmailJS Template ID
-        form.current,
-        "AMmuoxTS9RGvZlmeS"  // Replace with your EmailJS Public Key
-      )
-      .then(
-        () => {
-          setIsSent(true);
-          form.current.reset(); // Reset form fields after sending
-          toast.success("Message sent successfully! ✅", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: "dark",
-          });
-        },
-        (error) => {
-          console.error("Error sending message:", error);
-          toast.error("Failed to send message. Please try again.", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: "dark",
-          });
-        }
-      );
-  };
+const sendEmail = (e) => {
+  e.preventDefault();
+  setIsSending(true); // Start loader
+
+  emailjs
+    .sendForm(
+      "service_6wqav2n",  // Replace with your EmailJS Service ID
+      "template_fv5y93p",  // Replace with your EmailJS Template ID
+      form.current,
+      "AMmuoxTS9RGvZlmeS"  // Replace with your EmailJS Public Key
+    )
+    .then(
+      () => {
+        setIsSent(true);
+        form.current.reset(); // Reset form fields after sending
+        toast.success("Message sent successfully! ✅", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "dark",
+        });
+      },
+      (error) => {
+        console.error("Error sending message:", error);
+        toast.error("Failed to send message. Please try again.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "dark",
+        });
+      }
+    )
+    .finally(() => setIsSending(false)); // Stop loader
+};
 
   return (
     <section
@@ -98,13 +102,15 @@ const Contact = () => {
             required
             className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
           />
-          
+
           {/* Send Button */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-pink-500 py-3 text-white font-semibold rounded-md hover:opacity-90 transition"
+            disabled={isSending}
+            className={`w-full bg-gradient-to-r from-purple-600 to-pink-500 py-3 text-white font-semibold rounded-md 
+    ${isSending ? "opacity-70 cursor-not-allowed" : "hover:opacity-90"} transition`}
           >
-            Send
+            {isSending ? "Sending..." : "Send"}
           </button>
         </form>
       </div>
