@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Certifications } from "../../constants"; // Import your data
-import CourseraLogo from '../../assets/Certificate_logo/Coursera.png';
+  import CourseraLogo from '../../assets/Certificate_logo/Coursera.png';
 import InfosysLogo from '../../assets/Certificate_logo/Infosys.png';
 
 const Certification = () => {
