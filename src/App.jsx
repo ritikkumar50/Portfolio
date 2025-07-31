@@ -1,12 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
-
 import Navbar from "./components/Navbar/Navbar";
 import About from "./components/about/about";
-=======
-import Navbar from "./components/Navbar/Navbar";
-import About from "./components/About/About";
->>>>>>> ceba6e9d7bb8a77e89a0539874ad1fd9c476bddd
 import Skills from "./components/Skills/Skills";
 import Certification from "./components/Certification/Certifiaction";
 import Work from "../Work";
